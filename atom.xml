@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2019-10-12T14:41:42.731Z</updated>
+  <updated>2020-01-07T11:52:46.498Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2020/02/11/hello-world/"/>
-    <id>/2020/02/11/hello-world/</id>
-    <published>2020-02-11T14:17:37.734Z</published>
-    <updated>2019-10-12T14:41:42.731Z</updated>
+    <title>前端常见面试题总结（2019）</title>
+    <link href="/2020/01/07/mianshi2019/"/>
+    <id>/2020/01/07/mianshi2019/</id>
+    <published>2020-01-07T11:34:55.000Z</published>
+    <updated>2020-01-07T11:52:46.498Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,222 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;h3 id=&quot;1、什么是mvvm、mvc-模型？&quot;&gt;&lt;a href=&quot;#1、什么是mvvm、mvc-模型？&quot; class=&quot;headerlink&quot; title=&quot;1、什么是mvvm、mvc 模型？&quot;&gt;&lt;/a&gt;1、什么是mvvm、mvc
         
       
     
     </summary>
     
+      <category term="资源" scheme="/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue基础学习（四）</title>
+    <link href="/2020/01/07/vue4/"/>
+    <id>/2020/01/07/vue4/</id>
+    <published>2020-01-07T11:13:03.000Z</published>
+    <updated>2020-01-07T11:33:17.227Z</updated>
+    
+    <summary type="html">
+    
+      前端路由、v-router、嵌套路由、路由导航
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前后端交互</title>
+    <link href="/2020/01/04/axios/"/>
+    <id>/2020/01/04/axios/</id>
+    <published>2020-01-04T11:41:33.000Z</published>
+    <updated>2020-01-04T11:46:25.571Z</updated>
+    
+    <summary type="html">
+    
+      Ajax、promise、fetch、axios、async 和 await
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue基础学习（三）</title>
+    <link href="/2020/01/04/vue3/"/>
+    <id>/2020/01/04/vue3/</id>
+    <published>2020-01-04T11:35:10.000Z</published>
+    <updated>2020-01-04T11:39:37.842Z</updated>
+    
+    <summary type="html">
+    
+      组件注册、组件传值、组件插槽
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue基础学习（二）</title>
+    <link href="/2020/01/04/vue2/"/>
+    <id>/2020/01/04/vue2/</id>
+    <published>2020-01-04T11:31:49.000Z</published>
+    <updated>2020-01-04T11:32:59.982Z</updated>
+    
+    <summary type="html">
+    
+      vue常用特性、计算属性、监听器、过滤器、生命周期
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue基础学习（一）</title>
+    <link href="/2020/01/04/vue1/"/>
+    <id>/2020/01/04/vue1/</id>
+    <published>2020-01-04T11:13:49.000Z</published>
+    <updated>2020-01-04T11:34:41.971Z</updated>
+    
+    <summary type="html">
+    
+      vue指令、mvvm模式
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX学习第四天</title>
+    <link href="/2019/12/21/ajax4/"/>
+    <id>/2019/12/21/ajax4/</id>
+    <published>2019-12-21T12:46:31.000Z</published>
+    <updated>2019-12-21T12:55:47.123Z</updated>
+    
+    <summary type="html">
+    
+      jquery中Ajax的使用
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX学习第三天</title>
+    <link href="/2019/12/21/ajax3/"/>
+    <id>/2019/12/21/ajax3/</id>
+    <published>2019-12-21T12:33:00.000Z</published>
+    <updated>2019-12-21T12:55:13.939Z</updated>
+    
+    <summary type="html">
+    
+      同源策略、跨域
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX学习第二天</title>
+    <link href="/2019/12/19/ajax2/"/>
+    <id>/2019/12/19/ajax2/</id>
+    <published>2019-12-19T12:31:55.000Z</published>
+    <updated>2019-12-21T12:44:15.457Z</updated>
+    
+    <summary type="html">
+    
+      art-template模板使用、三级联动、FormData实现文件上传
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX学习第一天</title>
+    <link href="/2019/12/19/ajax1/"/>
+    <id>/2019/12/19/ajax1/</id>
+    <published>2019-12-19T12:11:18.000Z</published>
+    <updated>2019-12-21T12:45:17.789Z</updated>
+    
+    <summary type="html">
+    
+      ajax介绍、原理、封装ajax
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>资源下载</title>
+    <link href="/2019/10/27/text2/"/>
+    <id>/2019/10/27/text2/</id>
+    <published>2019-10-27T08:05:48.000Z</published>
+    <updated>2020-01-07T11:53:02.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;提取链接：&lt;a href=&quot;https://pan.baidu.com/s/1zA4NfJruzXaFW8I7LlqQLg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;百度网盘&lt;/a&gt;&lt;br&gt;提取码：2bbw&lt;br&gt;提取链接：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="资源" scheme="/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="source" scheme="/tags/source/"/>
     
   </entry>
   
