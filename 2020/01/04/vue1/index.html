@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">vue基础学习（一） | GyCalcc</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのCalcc";
+  mashiro_option.author_name = "Calcc";
+  mashiro_option.site_url = "https://GyCalcc.github.io/";
+  mashiro_option.v_appId = "IjWfSuEtrULqKCk3YOxYV0RP-gzGzoHsz";
+  mashiro_option.v_appKey = "9MBuxIO9ObpiotK1OBMOoQpL";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/cover/1.jpg,https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/cover/2.jpg,https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/cover/3.jpg,https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/cover/4.jpg,https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/cover/5.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://GyCalcc.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/custom/timg (4).jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/GyCalcc" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/u/5755946044/home?wvr=5" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/u/5755946044/home?wvr=5" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">Calcc</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/转载/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(http://cdn.calcc.live/timg3.webp);" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg3.webp">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      vue基础学习（一）</h1>
+      <p class="entry-census">
+        <span>
+          <a href="GyCalcc.coding.me">
+            <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/custom/timg (4).jpg">
+          </a>
+        </span>
+        <span>
+          <a href="GyCalcc.coding.me">Calcc</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-1-4<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h3 id="Vue-是什么？"><a href="#Vue-是什么？" class="headerlink" title="Vue 是什么？"></a>Vue 是什么？</h3><ul>
+<li><strong>Vue (读音 /vjuː/，类似于 </strong>view<strong>) 是一套用于构建用户界面的渐进式框架</strong></li>
+<li>vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li>本质就是自定义属性</li>
+<li>Vue中指定都是以 v- 开头 </li>
+</ul>
+<h3 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h3><ul>
+<li><p>防止页面加载时出现闪烁问题</p>
+<pre><code class="html"> &lt;style type=&quot;text/css&quot;&gt;
+  /* 
+    1、通过属性选择器 选择到 带有属性 v-cloak的标签  让他隐藏
+ */
+  [v-cloak]{
+    /* 元素隐藏    */
+    display: none;
+  }
+  &lt;/style&gt;
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;!-- 2、 让带有插值 语法的   添加 v-cloak 属性 
+         在 数据渲染完场之后，v-cloak 属性会被自动去除，
+         v-cloak一旦移除也就是没有这个属性了  属性选择器就选择不到该标签
+         也就是对应的标签会变为可见
+    --&gt;
+    &lt;div  v-cloak  &gt;{{msg}}&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    var vm = new Vue({
+      //  el   指定元素 id 是 app 的元素  
+      el: &#39;#app&#39;,
+      //  data  里面存储的是数据
+      data: {
+        msg: &#39;Hello Vue&#39;
+      }
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="v-text"><a href="#v-text" class="headerlink" title="v-text"></a>v-text</h3><ul>
+<li>v-text指令用于将数据填充到标签中，作用于插值表达式类似，但是没有闪动问题</li>
+<li>如果数据中有HTML标签会将html标签一并输出</li>
+<li>注意：此处为单向绑定，数据对象上的值改变，插值会发生变化；但是当插值发生变化并不会影响数据对象的值</li>
+</ul>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;!--  
+        注意:在指令中不要写插值语法  直接写对应的变量名称 
+        在 v-text 中 赋值的时候不要在写 插值语法
+        一般属性中不加 {{}}  直接写 对应 的数据名 
+    --&gt;
+    &lt;p v-text=&quot;msg&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;
+        &lt;!-- Vue  中只有在标签的 内容中 才用插值语法 --&gt;
+        {{msg}}
+    &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    new Vue({
+        el: &#39;#app&#39;,
+        data: {
+            msg: &#39;Hello Vue.js&#39;
+        }
+    });
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="v-html"><a href="#v-html" class="headerlink" title="v-html"></a>v-html</h3><ul>
+<li><p>用法和v-text 相似  但是他可以将HTML片段填充到标签中</p>
+</li>
+<li><p>可能有安全问题, 一般只在可信任内容上使用 <code>v-html</code>，<strong>永不</strong>用在用户提交的内容上</p>
+</li>
+<li><p>它与v-text区别在于v-text输出的是纯文本，浏览器不会对其再进行html解析，但v-html会将其当html标签解析后输出。</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+　　&lt;p v-html=&quot;html&quot;&gt;&lt;/p&gt; &lt;!-- 输出：html标签在渲染的时候被解析 --&gt;
+
+    &lt;p&gt;{{message}}&lt;/p&gt; &lt;!-- 输出：&lt;span&gt;通过双括号绑定&lt;/span&gt; --&gt;
+
+　　&lt;p v-text=&quot;text&quot;&gt;&lt;/p&gt; &lt;!-- 输出：&lt;span&gt;html标签在渲染的时候被源码输出&lt;/span&gt; --&gt;
+&lt;/div&gt;
+&lt;script&gt;
+　　let app = new Vue({
+　　el: &quot;#app&quot;,
+　　data: {
+　　　　message: &quot;&lt;span&gt;通过双括号绑定&lt;/span&gt;&quot;,
+　　　　html: &quot;&lt;span&gt;html标签在渲染的时候被解析&lt;/span&gt;&quot;,
+　　　　text: &quot;&lt;span&gt;html标签在渲染的时候被源码输出&lt;/span&gt;&quot;,
+　　}
+ });
+&lt;/script&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="v-pre"><a href="#v-pre" class="headerlink" title="v-pre"></a>v-pre</h3><ul>
+<li>显示原始信息跳过编译过程</li>
+<li>跳过这个元素和它的子元素的编译过程。</li>
+<li><strong>一些静态的内容不需要编译加这个指令可以加快渲染</strong></li>
+</ul>
+<pre><code class="html">    &lt;span v-pre&gt;{{ this will not be compiled }}&lt;/span&gt;    
+    &lt;!--  显示的是{{ this will not be compiled }}  --&gt;
+    &lt;span v-pre&gt;{{msg}}&lt;/span&gt;  
+     &lt;!--   即使data里面定义了msg这里仍然是显示的{{msg}}  --&gt;
+&lt;script&gt;
+    new Vue({
+        el: &#39;#app&#39;,
+        data: {
+            msg: &#39;Hello Vue.js&#39;
+        }
+    });
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="v-once"><a href="#v-once" class="headerlink" title="v-once"></a><strong>v-once</strong></h3><ul>
+<li>执行一次性的插值【当数据改变时，插值处的内容不会继续更新】</li>
+</ul>
+<pre><code class="html">  &lt;!-- 即使data里面定义了msg 后期我们修改了 仍然显示的是第一次data里面存储的数据即 Hello Vue.js  --&gt;
+     &lt;span v-once&gt;{{ msg}}&lt;/span&gt;    
+&lt;script&gt;
+    new Vue({
+        el: &#39;#app&#39;,
+        data: {
+            msg: &#39;Hello Vue.js&#39;
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><ul>
+<li>当数据发生变化的时候，视图也就发生变化</li>
+<li>当视图发生变化的时候，数据也会跟着同步变化</li>
+</ul>
+<h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><ul>
+<li><strong>v-model</strong>是一个指令，限制在 <code>&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;、components</code>中使用</li>
+</ul>
+<pre><code class="html"> &lt;div id=&quot;app&quot;&gt;
+      &lt;div&gt;{{msg}}&lt;/div&gt;
+      &lt;div&gt;
+          当输入框中内容改变的时候，  页面上的msg  会自动更新
+        &lt;input type=&quot;text&quot; v-model=&#39;msg&#39;&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+<h3 id="mvvm"><a href="#mvvm" class="headerlink" title="mvvm"></a>mvvm</h3><ul>
+<li>MVC 是后端的分层开发概念； MVVM是前端视图层的概念，主要关注于 视图层分离，也就是说：MVVM把前端的视图层，分为了 三部分 Model, View , VM ViewModel</li>
+<li>m   model  <ul>
+<li>数据层   Vue  中 数据层 都放在 data 里面</li>
+</ul>
+</li>
+<li>v   view     视图   <ul>
+<li>Vue  中  view      即 我们的HTML页面  </li>
+</ul>
+</li>
+<li>vm   （view-model）     控制器     将数据和视图层建立联系      <ul>
+<li>vm 即  Vue 的实例  就是 vm  </li>
+</ul>
+</li>
+</ul>
+<h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h3><ul>
+<li>用来绑定事件的</li>
+<li>形式如：v-on:click  缩写为 @click;</li>
+</ul>
+<h3 id="v-on事件函数中传入参数"><a href="#v-on事件函数中传入参数" class="headerlink" title="v-on事件函数中传入参数"></a>v-on事件函数中传入参数</h3><pre><code class="html">
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;div&gt;{{num}}&lt;/div&gt;
+        &lt;div&gt;
+            &lt;!-- 如果事件直接绑定函数名称，那么默认会传递事件对象作为事件函数的第一个参数 --&gt;
+            &lt;button v-on:click=&#39;handle1&#39;&gt;点击1&lt;/button&gt;
+            &lt;!-- 2、如果事件绑定函数调用，那么事件对象必须作为最后一个参数显示传递，
+                 并且事件对象的名称必须是$event 
+            --&gt;
+            &lt;button v-on:click=&#39;handle2(123, 456, $event)&#39;&gt;点击2&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var vm = new Vue({
+            el: &#39;#app&#39;,
+            data: {
+                num: 0
+            },
+            methods: {
+                handle1: function(event) {
+                    console.log(event.target.innerHTML)
+                },
+                handle2: function(p, p1, event) {
+                    console.log(p, p1)
+                    console.log(event.target.innerHTML)
+                    this.num++;
+                }
+            }
+        });
+    &lt;/script&gt;
+</code></pre>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><ul>
+<li>在事件处理程序中调用 <code>event.preventDefault()</code> 或 <code>event.stopPropagation()</code> 是非常常见的需求。</li>
+<li>Vue 不推荐我们操作DOM    为了解决这个问题，Vue.js 为 <code>v-on</code> 提供了<strong>事件修饰符</strong></li>
+<li>修饰符是由点开头的指令后缀来表示的</li>
+</ul>
+<pre><code class="html">&lt;!-- 阻止单击事件继续传播 --&gt;
+&lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 提交事件不再重载页面 --&gt;
+&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+
+&lt;!-- 修饰符可以串联   即阻止冒泡也阻止默认事件 --&gt;
+&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 只当在 event.target 是当前元素自身时触发处理函数 --&gt;
+&lt;!-- 即事件不是从内部元素触发的 --&gt;
+&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+
+使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。
+</code></pre>
+<h3 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h3><ul>
+<li>在做项目中有时会用到键盘事件，在监听键盘事件时，我们经常需要检查详细的按键。Vue 允许为 <code>v-on</code> 在监听键盘事件时添加按键修饰符</li>
+</ul>
+<pre><code class="html">&lt;!-- 只有在 `keyCode` 是 13 时调用 `vm.submit()` --&gt;
+&lt;input v-on:keyup.13=&quot;submit&quot;&gt;
+
+&lt;!-- -当点击enter 时调用 `vm.submit()` --&gt;
+&lt;input v-on:keyup.enter=&quot;submit&quot;&gt;
+
+&lt;!--当点击enter或者space时  时调用 `vm.alertMe()`   --&gt;
+&lt;input type=&quot;text&quot; v-on:keyup.enter.space=&quot;alertMe&quot; &gt;
+
+常用的按键修饰符
+.enter =&gt;    enter键
+.tab =&gt; tab键
+.delete (捕获“删除”和“退格”按键) =&gt;  删除键
+.esc =&gt; 取消键
+.space =&gt;  空格键
+.up =&gt;  上
+.down =&gt;  下
+.left =&gt;  左
+.right =&gt;  右
+
+&lt;script&gt;
+    var vm = new Vue({
+        el:&quot;#app&quot;,
+        methods: {
+              submit:function(){},
+              alertMe:function(){},
+        }
+    })
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="自定义按键修饰符别名"><a href="#自定义按键修饰符别名" class="headerlink" title="自定义按键修饰符别名"></a>自定义按键修饰符别名</h3><ul>
+<li>在Vue中可以通过<code>config.keyCodes</code>自定义按键修饰符别名</li>
+</ul>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    预先定义了keycode 116（即F5）的别名为f5，因此在文字输入框中按下F5，会触发prompt方法
+    &lt;input type=&quot;text&quot; v-on:keydown.f5=&quot;prompt()&quot;&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+
+    Vue.config.keyCodes.f5 = 116;
+
+    let app = new Vue({
+        el: &#39;#app&#39;,
+        methods: {
+            prompt: function() {
+                alert(&#39;我是 F5！&#39;);
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+<h3 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h3><ul>
+<li>v-bind 指令被用来响应地更新 HTML 属性</li>
+<li>v-bind:href    可以缩写为    :href;</li>
+</ul>
+<pre><code class="html">&lt;!-- 绑定一个属性 --&gt;
+&lt;img v-bind:src=&quot;imageSrc&quot;&gt;
+
+&lt;!-- 缩写 --&gt;
+&lt;img :src=&quot;imageSrc&quot;&gt;
+</code></pre>
+<h4 id="绑定对象"><a href="#绑定对象" class="headerlink" title="绑定对象"></a>绑定对象</h4><ul>
+<li>我们可以给v-bind:class 一个对象，以动态地切换class。</li>
+<li>注意：v-bind:class指令可以与普通的class特性共存</li>
+</ul>
+<pre><code class="html">1、 v-bind 中支持绑定一个对象 
+    如果绑定的是一个对象 则 键为 对应的类名  值 为对应data中的数据 
+&lt;!-- 
+    HTML最终渲染为 &lt;ul class=&quot;box textColor textSize&quot;&gt;&lt;/ul&gt;
+    注意：
+        textColor，textSize  对应的渲染到页面上的CSS类名    
+        isColor，isSize  对应vue data中的数据  如果为true 则对应的类名 渲染到页面上 
+
+
+        当 isColor 和 isSize 变化时，class列表将相应的更新，
+        例如，将isSize改成false，
+        class列表将变为 &lt;ul class=&quot;box textColor&quot;&gt;&lt;/ul&gt;
+--&gt;
+
+&lt;ul class=&quot;box&quot; v-bind:class=&quot;{textColor:isColor, textSize:isSize}&quot;&gt;
+    &lt;li&gt;学习Vue&lt;/li&gt;
+    &lt;li&gt;学习Node&lt;/li&gt;
+    &lt;li&gt;学习React&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;div v-bind:style=&quot;{color:activeColor,fontSize:activeSize}&quot;&gt;对象语法&lt;/div&gt;
+
+&lt;sript&gt;
+var vm= new Vue({
+    el:&#39;.box&#39;,
+    data:{
+        isColor:true,
+        isSize:true，
+        activeColor:&quot;red&quot;,
+        activeSize:&quot;25px&quot;,
+    }
+})
+&lt;/sript&gt;
+&lt;style&gt;
+
+    .box{
+        border:1px dashed #f0f;
+    }
+    .textColor{
+        color:#f00;
+        background-color:#eef;
+    }
+    .textSize{
+        font-size:30px;
+        font-weight:bold;
+    }
+&lt;/style&gt;
+</code></pre>
+<h4 id="绑定class"><a href="#绑定class" class="headerlink" title="绑定class"></a>绑定class</h4><pre><code class="html">2、  v-bind 中支持绑定一个数组    数组中classA和 classB 对应为data中的数据
+
+这里的classA  对用data 中的  classA
+这里的classB  对用data 中的  classB
+&lt;ul class=&quot;box&quot; :class=&quot;[classA, classB]&quot;&gt;
+    &lt;li&gt;学习Vue&lt;/li&gt;
+    &lt;li&gt;学习Node&lt;/li&gt;
+    &lt;li&gt;学习React&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+var vm= new Vue({
+    el:&#39;.box&#39;,
+    data:{
+        classA:‘textColor‘,
+        classB:‘textSize‘
+    }
+})
+&lt;/script&gt;
+&lt;style&gt;
+    .box{
+        border:1px dashed #f0f;
+    }
+    .textColor{
+        color:#f00;
+        background-color:#eef;
+    }
+    .textSize{
+        font-size:30px;
+        font-weight:bold;
+    }
+&lt;/style&gt;
+</code></pre>
+<h4 id="绑定对象和绑定数组-的区别"><a href="#绑定对象和绑定数组-的区别" class="headerlink" title="绑定对象和绑定数组 的区别"></a>绑定对象和绑定数组 的区别</h4><ul>
+<li>绑定对象的时候 对象的属性 即要渲染的类名 对象的属性值对应的是 data 中的数据 </li>
+<li>绑定数组的时候数组里面存的是data 中的数据 </li>
+</ul>
+<h4 id="绑定style"><a href="#绑定style" class="headerlink" title="绑定style"></a>绑定style</h4><pre><code class="html"> &lt;div v-bind:style=&quot;styleObject&quot;&gt;绑定样式对象&lt;/div&gt;&#39;
+
+&lt;!-- CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来)    --&gt;
+ &lt;div v-bind:style=&quot;{ color: activeColor, fontSize: fontSize,background:&#39;red&#39; }&quot;&gt;内联样式&lt;/div&gt;
+
+&lt;!--组语法可以将多个样式对象应用到同一个元素 --&gt;
+&lt;div v-bind:style=&quot;[styleObj1, styleObj2]&quot;&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+    new Vue({
+      el: &#39;#app&#39;,
+      data: {
+        styleObject: {
+          color: &#39;green&#39;,
+          fontSize: &#39;30px&#39;,
+          background:&#39;red&#39;
+        }，
+        activeColor: &#39;green&#39;,
+           fontSize: &quot;30px&quot;
+      },
+      styleObj1: {
+             color: &#39;red&#39;
+       },
+       styleObj2: {
+            fontSize: &#39;30px&#39;
+       }
+
+&lt;/script&gt;
+</code></pre>
+<h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><h4 id="v-if-使用场景"><a href="#v-if-使用场景" class="headerlink" title="v-if 使用场景"></a>v-if 使用场景</h4><ul>
+<li>1- 多个元素 通过条件判断展示或者隐藏某个元素。或者多个元素</li>
+<li>2- 进行两个视图之间的切换</li>
+</ul>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+        &lt;!--  判断是否加载，如果为真，就加载，否则不加载--&gt;
+        &lt;span v-if=&quot;flag&quot;&gt;
+           如果flag为true则显示,false不显示!
+        &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    var vm = new Vue({
+        el:&quot;#app&quot;,
+        data:{
+            flag:true
+        }
+    })
+&lt;/script&gt;
+
+----------------------------------------------------------
+
+    &lt;div v-if=&quot;type === &#39;A&#39;&quot;&gt;
+       A
+    &lt;/div&gt;
+  &lt;!-- v-else-if紧跟在v-if或v-else-if之后   表示v-if条件不成立时执行--&gt;
+    &lt;div v-else-if=&quot;type === &#39;B&#39;&quot;&gt;
+       B
+    &lt;/div&gt;
+    &lt;div v-else-if=&quot;type === &#39;C&#39;&quot;&gt;
+       C
+    &lt;/div&gt;
+  &lt;!-- v-else紧跟在v-if或v-else-if之后--&gt;
+    &lt;div v-else&gt;
+       Not A/B/C
+    &lt;/div&gt;
+
+&lt;script&gt;
+    new Vue({
+      el: &#39;#app&#39;,
+      data: {
+        type: &#39;C&#39;
+      }
+    })
+&lt;/script&gt;
+</code></pre>
+<h4 id="v-show-和-v-if的区别"><a href="#v-show-和-v-if的区别" class="headerlink" title="v-show 和 v-if的区别"></a>v-show 和 v-if的区别</h4><ul>
+<li>v-show本质就是标签display设置为none，控制隐藏<ul>
+<li>v-show只编译一次，后面其实就是控制css，而v-if不停的销毁和创建，故v-show性能更好一点。</li>
+</ul>
+</li>
+<li>v-if是动态的向DOM树内添加或者删除DOM元素<ul>
+<li>v-if切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件</li>
+</ul>
+</li>
+</ul>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h4><ul>
+<li>用于循环的数组里面的值可以是对象，也可以是普通元素  </li>
+</ul>
+<pre><code class="html">&lt;ul id=&quot;example-1&quot;&gt;
+   &lt;!-- 循环结构-遍历数组  
+    item 是我们自己定义的一个名字  代表数组里面的每一项  
+    items对应的是 data中的数组--&gt;
+  &lt;li v-for=&quot;item in items&quot;&gt;
+    {{ item.message }}
+  &lt;/li&gt; 
+
+&lt;/ul&gt;
+&lt;script&gt;
+ new Vue({
+  el: &#39;#example-1&#39;,
+  data: {
+    items: [
+      { message: &#39;Foo&#39; },
+      { message: &#39;Bar&#39; }
+    ]，
+
+  }
+})
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li><strong>不推荐</strong>同时使用 <code>v-if</code> 和 <code>v-for</code></li>
+<li>当 <code>v-if</code> 与 <code>v-for</code> 一起使用时，<code>v-for</code> 具有比 <code>v-if</code> 更高的优先级。</li>
+</ul>
+<pre><code class="html">   &lt;!--  循环结构-遍历对象
+        v 代表   对象的value
+        k  代表对象的 键 
+        i  代表索引    
+    ---&gt; 
+     &lt;div v-if=&#39;v==13&#39; v-for=&#39;(v,k,i) in obj&#39;&gt;{{v + '---' + k + '---' + i}}&lt;/div&gt;
+
+&lt;script&gt;
+ new Vue({
+  el: &#39;#example-1&#39;,
+  data: {
+    items: [
+      { message: &#39;Foo&#39; },
+      { message: &#39;Bar&#39; }
+    ]，
+    obj: {
+        uname: &#39;zhangsan&#39;,
+        age: 13,
+        gender: &#39;female&#39;
+    }
+  }
+})
+&lt;/script&gt;
+</code></pre>
+<ul>
+<li>key 的作用<ul>
+<li><strong>key来给每个节点做一个唯一标识</strong></li>
+<li><strong>key的作用主要是为了高效的更新虚拟DOM</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code class="html">&lt;ul&gt;
+  &lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/01/04/vue2/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%205.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/timg%205.webp">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                vue基础学习（二）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/12/21/ajax4/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%207.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/timg%207.webp">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                AJAX学习第四天</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "IjWfSuEtrULqKCk3YOxYV0RP-gzGzoHsz",
+        appKey: "9MBuxIO9ObpiotK1OBMOoQpL",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="GyCalcc.coding.me" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/custom/timg (4).jpg" itemprop="image" alt="Calcc" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="GyCalcc.coding.me" itemprop="url" rel="author">Calcc</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 GyCalcc<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/GyCalcc/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/GyCalcc/GyCalcc@2.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/GyCalcc/GyCalcc@2.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+<!-- 访客数统计 -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by" style="text-align: center;color: #b9b9b9">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+
+<!-- 天数统计 -->
+<div style="text-align: center">
+<span id="timeDate" style="color: #b9b9b9" >载入天数...</span>
+<span id="times" style="color: #b9b9b9">载入时分秒...</span>
+</div>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/10/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "破站已侥幸存活 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+
+ <!-- 实现换肤功能 -->
+  
+ 
+<div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+            <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+            <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+            <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+            <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+            <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+            <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+            <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+</div>   
+<canvas id="night-mode-cover"></canvas>
+ 
+  <div class="changeSkin-gear no-select">
+    <div class="keys" id="setbtn"> 
+     <span id="open-skinMenu"> 切换主题 | SCHEME TOOL  
+       <i class="iconfont icon-gear inline-block rotating"></i> 
+     </span>
+    </div>
+  </div>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@1.9.1/img/custom/timg (4).jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのCalcc</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/GyCalcc" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/u/5755946044/home?wvr=5" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2430835554&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/转载/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<div class="aplayer"
+
+    data-id="2451836751"
+
+    data-server="netease"
+
+    data-type="playlist"
+
+    data-fixed="true"
+
+    data-autoplay="false"
+
+    data-loop="all"
+
+    data-order="random"
+
+    data-preload="auto"
+
+    data-volume="0.7"
+
+    data-mutex="true"
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
+
+<!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+<!-- 雪花特效 -->
+<script type="text/javascript" src="\js\snow.js"></script>
+<!-- 禁止右键 -->
+<script>
+  document.oncontextmenu = function(){
+      return false;
+  }
+</script>
+<!-- lived 2d -->
+<script src="https://cdn.jsdelivr.net/gh/GyCalcc/live2d-widget/autoload.js"></script>

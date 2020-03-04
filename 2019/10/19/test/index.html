@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">GitHub+Hexo 个人博客搭建教程 | GyCalcc</title>
+  <title itemprop="name">GitHub+Hexo 个人博客搭建教程（一） | GyCalcc</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -341,15 +341,15 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      GitHub+Hexo 个人博客搭建教程</h1>
+      GitHub+Hexo 个人博客搭建教程（一）</h1>
       <p class="entry-census">
         <span>
-          <a href="GyCalcc.coding.git">
+          <a href="GyCalcc.coding.me">
             <img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/custom/timg (4).jpg">
           </a>
         </span>
         <span>
-          <a href="GyCalcc.coding.git">Calcc</a>
+          <a href="GyCalcc.coding.me">Calcc</a>
         </span>
         <span class="bull">
         ·</span>
@@ -367,13 +367,13 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>博客是一项被我误认为已经快消失殆尽的信息表达形式，简直是上一个时代的东西。自己对博客才有了一个全新的认识，好记性不如烂键盘，博客可以详细的记载下在学习过程中遇到的那些扎心知识点和自己对其的见解。并且可以展示出来，这样假如有错误也能够最快程度的发现。因此萌生了一个自己建一个博客的想法。</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>博客是一项被我误认为已经快消失殆尽的信息表达形式，简直是上一个时代的东西。自己对博客才有了一个全新的认识，好记性不如烂键盘，博客可以详细的记载下在学习过程中遇到的那些扎心知识点和自己对其的见解。并且可以展示出来，这样假如有错误也能够最快程度的发现。因此萌生了一个自己建一个博客的想法。</p>
 <p> 目前市面上的博客很多，如CSDN，博客园，简书等平台，可以直接在上面发表，用户交互做的好，写的文章百度也能搜索的到。<strong>缺点是比较不自由，会受到平台的各种限制和恶心的广告</strong>。</p>
 <p>而自己购买域名和服务器，搭建博客的成本实在是太高了，不光是说这些购买成本，<strong>单单是花力气去自己搭这么一个网站，还要定期的维护它，对于我们大多数人来说，实在是没有这样的精力和时间。</strong></p>
 <p>那么就有第三种选择，直接在github page平台上托管我们的博客。这样就可以安心的来写作，又不需要定期维护，<strong>而且hexo作为一个快速简洁的博客框架，用它来搭建博客真的非常容易。</strong></p>
 <p>经过一段时间的收集资料，发现有另外几种方案的实现，Wordpress, Hexo, Jekyll等， 既减少了服务器上的运维，也可以拥有好看的前端效果，而且整个搭建过程也是很简单的。</p>
 <p>采用Hexo博客框架，来快速搭建属于自己的博客系统，在托管到Pages上去，可以省去服务器维护的时间和精力。Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="https://macdown.uranusjr.com/" target="_blank" rel="noopener">Markdown</a>或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>Hexo的主题样式也有很多好看的，而且github都有star上万的。说明还是很受欢迎的。</p>
-<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p><img src="https://pic2.zhimg.com/80/v2-6890485c84748900d9dae824b7f7cbb1_hd.jpg" alt><br>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入hexo官网进行详细查看，因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
+<h2 id="hexo介绍"><a href="#hexo介绍" class="headerlink" title="hexo介绍"></a>hexo介绍</h2><p><img src="https://pic2.zhimg.com/80/v2-6890485c84748900d9dae824b7f7cbb1_hd.jpg" alt><br>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入hexo官网进行详细查看，因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
 <h2 id="hexo的搭建步骤"><a href="#hexo的搭建步骤" class="headerlink" title="hexo的搭建步骤"></a>hexo的搭建步骤</h2><ul>
 <li>安装Git</li>
 <li>安装Node.js</li>
@@ -407,7 +407,7 @@ npm -v
 <p>生成静态文件</p>
 <pre><code class="yml">hexo g
 </code></pre>
-<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。使用ctrl+c可以把服务关掉。）" target="_blank" rel="noopener">http://localhost:4000/。使用ctrl+c可以把服务关掉。）</a></p>
+<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/。(使用ctrl+c可以把服务关掉)" target="_blank" rel="noopener">http://localhost:4000/。(使用ctrl+c可以把服务关掉)</a></p>
 <pre><code class="yml">hexo s
 </code></pre>
 <h3 id="4-GitHub创建个人仓库"><a href="#4-GitHub创建个人仓库" class="headerlink" title="4. GitHub创建个人仓库"></a>4. GitHub创建个人仓库</h3><p>首先需要创建一个<a href="https://github.com" target="_blank" rel="noopener">github</a>的账号。</p>
@@ -484,7 +484,7 @@ hexo deploy
           
             <div class="post-nepre half previous">
           
-            <a href="/2019/10/25/hello-world/" rel="prev">
+            <a href="/2020/02/11/hello-world/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -534,11 +534,11 @@ hexo deploy
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="GyCalcc.coding.git" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/custom/timg (4).jpg" itemprop="image" alt="Calcc" height="70" width="70"></a>
+          <a href="GyCalcc.coding.me" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.1/img/custom/timg (4).jpg" itemprop="image" alt="Calcc" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="GyCalcc.coding.git" itemprop="url" rel="author">Calcc</a>
+            <a href="GyCalcc.coding.me" itemprop="url" rel="author">Calcc</a>
             </h3>
           </div>
         </div>
@@ -583,7 +583,7 @@ hexo deploy
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 GyCalcc<br>
+      &copy; 2020 GyCalcc<br>
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -672,8 +672,21 @@ $(document).ready(function() {
 });
 </script>
 
-<span id="timeDate">载入天数...</span>
-<!-- <span id="times">载入时分秒...</span> -->
+<!-- 访客数统计 -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by" style="text-align: center;color: #b9b9b9">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+
+<!-- 天数统计 -->
+<div style="text-align: center">
+<span id="timeDate" style="color: #b9b9b9" >载入天数...</span>
+<span id="times" style="color: #b9b9b9">载入时分秒...</span>
+</div>
 <script>
     var now = new Date(); 
     function createtime() { 
@@ -686,10 +699,12 @@ $(document).ready(function() {
         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
         document.getElementById("timeDate").innerHTML = "破站已侥幸存活 "+dnum+" 天 "; 
-        // document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
 </script>
+
+
     <div class="openNav no-select" style="height: 50px;">
       <div class="iconflat no-select" style="width: 50px; height: 50px;">
         <div class="icon"></div>

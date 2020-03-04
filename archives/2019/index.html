@@ -358,6 +358,35 @@
               
               
                 
+                <h3 class="al_year">2020年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      02月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2020/02/11/hello-world/">
+                          <span style="color:#0bf;">
+                          11日22:17:37</span>
+                          Hello World
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+                
                 <h3 class="al_year">2019年</h3>
               
               
@@ -371,23 +400,10 @@
                     <ul class="al_post_list" style="">
               
                       <li>
-                        <a href="/2019/10/25/hello-world/">
-                          <span style="color:#0bf;">
-                          25日22:51:04</span>
-                          Hello World
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
                         <a href="/2019/10/19/test/">
                           <span style="color:#0bf;">
                           19日15:43:56</span>
-                          GitHub+Hexo 个人博客搭建教程
+                          GitHub+Hexo 个人博客搭建教程（一）
                         </a>
                       </li>
                       
@@ -465,7 +481,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 GyCalcc<br>
+      &copy; 2020 GyCalcc<br>
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -554,8 +570,21 @@ $(document).ready(function() {
 });
 </script>
 
-<span id="timeDate">载入天数...</span>
-<!-- <span id="times">载入时分秒...</span> -->
+<!-- 访客数统计 -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by" style="text-align: center;color: #b9b9b9">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+
+<!-- 天数统计 -->
+<div style="text-align: center">
+<span id="timeDate" style="color: #b9b9b9" >载入天数...</span>
+<span id="times" style="color: #b9b9b9">载入时分秒...</span>
+</div>
 <script>
     var now = new Date(); 
     function createtime() { 
@@ -568,10 +597,12 @@ $(document).ready(function() {
         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
         document.getElementById("timeDate").innerHTML = "破站已侥幸存活 "+dnum+" 天 "; 
-        // document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
 </script>
+
+
     <div class="openNav no-select" style="height: 50px;">
       <div class="iconflat no-select" style="width: 50px; height: 50px;">
         <div class="icon"></div>

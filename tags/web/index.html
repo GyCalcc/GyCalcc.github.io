@@ -360,7 +360,7 @@
     </div>
     <h1 class="entry-title">
     <a href="/2019/10/19/test/">
-    GitHub+Hexo 个人博客搭建教程</a>
+    GitHub+Hexo 个人博客搭建教程（一）</a>
     </h1>
     <div class="p-time">
       <i class="iconfont icon-time">
@@ -454,7 +454,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 GyCalcc<br>
+      &copy; 2020 GyCalcc<br>
       powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -543,8 +543,21 @@ $(document).ready(function() {
 });
 </script>
 
-<span id="timeDate">载入天数...</span>
-<!-- <span id="times">载入时分秒...</span> -->
+<!-- 访客数统计 -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by" style="text-align: center;color: #b9b9b9">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+
+<!-- 天数统计 -->
+<div style="text-align: center">
+<span id="timeDate" style="color: #b9b9b9" >载入天数...</span>
+<span id="times" style="color: #b9b9b9">载入时分秒...</span>
+</div>
 <script>
     var now = new Date(); 
     function createtime() { 
@@ -557,10 +570,12 @@ $(document).ready(function() {
         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
         document.getElementById("timeDate").innerHTML = "破站已侥幸存活 "+dnum+" 天 "; 
-        // document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
 </script>
+
+
     <div class="openNav no-select" style="height: 50px;">
       <div class="iconflat no-select" style="width: 50px; height: 50px;">
         <div class="icon"></div>
