@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-01-07T11:52:46.498Z</updated>
+  <updated>2020-03-07T09:19:43.623Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react基础学习（二）</title>
+    <link href="/2020/03/07/react2/"/>
+    <id>/2020/03/07/react2/</id>
+    <published>2020-03-07T09:04:30.000Z</published>
+    <updated>2020-03-07T09:19:43.623Z</updated>
+    
+    <summary type="html">
+    
+      react受控组件。表单处理
+    
+    </summary>
+    
+      <category term="web 技术" scheme="/categories/web-%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>react基础学习（一）</title>
+    <link href="/2020/03/06/react1/"/>
+    <id>/2020/03/06/react1/</id>
+    <published>2020-03-06T10:30:47.000Z</published>
+    <updated>2020-03-07T09:19:28.784Z</updated>
+    
+    <summary type="html">
+    
+      react介绍、react脚手架、JSX、组件
+    
+    </summary>
+    
+      <category term="web 技术" scheme="/categories/web-%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>前端常见面试题总结（2019）</title>
