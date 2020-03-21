@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">react基础学习（二） | GyCalcc</title>
+  <title itemprop="name">react基础学习（五） | GyCalcc</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -337,11 +337,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(http://cdn.calcc.live/timg%2010.webp);" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%2010.webp">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(http://cdn.calcc.live/timg3.webp);" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg3.webp">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      react基础学习（二）</h1>
+      react基础学习（五）</h1>
       <p class="entry-census">
         <span>
           <a href="GyCalcc.coding.me">
@@ -353,7 +353,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-3-7<span class="bull">
+        2020-3-12<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -367,102 +367,139 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h1><h2 id="表单处理"><a href="#表单处理" class="headerlink" title="表单处理"></a>表单处理</h2><h3 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h3><ul>
-<li>HTML中的表单元素是可输入的，也就是有自己的可变状态</li>
-<li>而React中可变状态通常保存在state中，并且只能通过<code>setState()</code> 方法来修改</li>
-<li>React讲state与表单元素值value绑定在一起，有state的值来控制表单元素的值</li>
-<li>受控组件：值受到react控制的表单元素</li>
+          <h1 id="React路由基础"><a href="#React路由基础" class="headerlink" title="React路由基础"></a>React路由基础</h1><h2 id="React路由介绍"><a href="#React路由介绍" class="headerlink" title="React路由介绍"></a>React路由介绍</h2><p>现代的前端应用大多数是SPA（单页应用程序），也就是只有一个HTML页面的应用程序。因为它的用户体验更好、对服务器压力更小。为了有效的使用单个页面来管理多页面的功能，前端路由应运而生。</p>
+<ul>
+<li>前端路由功能：让用户从一个视图（页面）导航到另一个视图（页面）</li>
+<li>前端路由是一套映射规则，在React中，是URL路径与组件的对应关系</li>
+<li>使用React路由简单来说，就是将路径和组件进行匹配</li>
 </ul>
-<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
-<li>在state中添加一个状态，作为表单元素的value值</li>
-<li>给表单元素绑定change事件，将表单元素的值设置为state的值</li>
-</ul>
-<h4 id="示例demo"><a href="#示例demo" class="headerlink" title="示例demo"></a>示例demo</h4><pre><code class="react">class App extends React.Component {
-    state = {
-        txt : &#39;&#39;
-    }
-    inputChange=(e)=&gt;{
-       this.setState({
-           txt: e.target.value
-       })
-    }
-    render(){
-        console.log(this.state);
+<h2 id="路由的基本使用"><a href="#路由的基本使用" class="headerlink" title="路由的基本使用"></a>路由的基本使用</h2><h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ul>
+<li>安装： yarn add react-router-dom / npm install react-router-dom</li>
+<li>导入路由的三个核心组件： Router / Route / Link</li>
+<li>使用Router 组件包裹整个应用</li>
+<li>使用Link组件作为导航菜单（路由入口）</li>
+<li><p>使用Route组件配置路由规则和要展示的组件（路由出口）</p>
+<pre><code class="react">  import React from &#39;react&#39;
+  import ReactDOM from &#39;react-dom&#39;
+  /* 
+  react-router-dom 的基本使用：
+  1 安装： yarn add react-router-dom
+  */
+  // 2 导入组件：
+  import { BrowserRouter as Router, Route, Link } from &#39;react-router-dom&#39;
 
-        return (
-            &lt;div&gt;
-                &lt;input type=&quot;text&quot; value={this.state.txt} onChange={this.inputChange}/&gt;
-            &lt;/div&gt;
-        )
-    }
-}
-ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
+  const First = () =&gt; &lt;p&gt;页面一的内容&lt;/p&gt;
+
+  // 3 使用Router组件包裹整个应用
+  const App = () =&gt; (
+  &lt;Router&gt;
+      &lt;div&gt;
+      &lt;h1&gt;React路由基础&lt;/h1&gt;
+      {/* 4 指定路由入口 */}
+      &lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+
+      {/* 5 指定路由出口 */}
+      &lt;Route path=&quot;/first&quot; component={First} /&gt;
+      &lt;/div&gt;
+  &lt;/Router&gt;
+  )
+
+  ReactDOM.render(&lt;App /&gt;, document.getElementById(&#39;root&#39;))
 </code></pre>
-<h4 id="多表单元素优化"><a href="#多表单元素优化" class="headerlink" title="多表单元素优化"></a>多表单元素优化</h4><ul>
-<li>问题：每个表单元素都有一个单独的事件处理函数，这样太繁琐</li>
-<li>优化：使用一个事件处理程序同时处理多个表单元素</li>
+</li>
 </ul>
-<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
-<li>给表单元素添加name属性（用来区分是哪一个表单），名称与state相同（用来更新数据的）</li>
-<li>根据表单内容来获取对应值</li>
-<li>在change事件处理程序中通过 [name] 来修改对应的state</li>
+<h3 id="常用组件说明"><a href="#常用组件说明" class="headerlink" title="常用组件说明"></a>常用组件说明</h3><ul>
+<li><strong>Router组件：</strong>包裹整个应用，一个React应用只需要使用一次<ul>
+<li>两种常用的Router： HashRouter和BrowserRouter</li>
+<li>HashRouter： 使用URL的哈希值实现 （localhost:3000/#/first）</li>
+<li>推荐 BrowserRouter：使用H5的history API实现（localhost3000/first）</li>
 </ul>
-<h5 id="示例demo-1"><a href="#示例demo-1" class="headerlink" title="示例demo"></a>示例demo</h5><pre><code class="react">class Haaa extends React.Component {
-    state={
-        txt:&#39;&#39;,
-        isChecked:false
-    }
-
-    inputChange = (e)=&gt;{
-        let target = e.target;
-        let value = target.type == &#39;checkbox&#39; ? target.checked : target.value;
-        this.setState({
-            [target.name]: value
-        })
-     }
-
-  render() {
-      console.log(this.state.txt);
-      console.log(this.state.isChecked);
-    return (
-        &lt;div&gt;
-        &lt;input type=&quot;text&quot; value={this.state.txt} name=&quot;txt&quot; onChange={this.inputChange}/&gt;
-        &lt;input type=&quot;checkbox&quot; value={this.state.isChecked} name=&quot;isChecked&quot; onChange={this.inputChange}/&gt;
-        &lt;/div&gt;
-    )
+</li>
+<li><strong>Link组件：</strong>用于指定导航链接（a标签）<ul>
+<li>最终Link会编译成a标签，而to属性会被编译成 a标签的href属性</li>
+</ul>
+</li>
+<li><strong>Route组件：</strong>指定路由展示组件相关信息<ul>
+<li>path属性：路由规则，这里需要跟Link组件里面to属性的值一致</li>
+<li>component属性：展示的组件</li>
+<li>Route写在哪，渲染出来的组件就在哪</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由的执行过程"><a href="#路由的执行过程" class="headerlink" title="路由的执行过程"></a>路由的执行过程</h3><ul>
+<li>点击Link组件的时，修改浏览器地址栏中的url</li>
+<li>React路由监听地址栏url的变化</li>
+<li>React路由内部遍历所有的Route组件，拿着Route里面path规则与pathname进行匹配</li>
+<li>当路由规则（path）能够匹配地址栏中的pathname时，就展示该Route组件的内容</li>
+</ul>
+<h3 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h3><ul>
+<li><strong>编程式导航：</strong>通过JS代码来实现页面跳转</li>
+<li><strong>history</strong>是React路由提供的，用于获取浏览器历史记录的相关信息</li>
+<li><strong>push(path)：</strong>跳转到某个页面，参数path表示要跳转的路径</li>
+<li><p><strong>go(n)</strong>：前进或后退功能，参数n表示前进或后退页面数量</p>
+<pre><code class="react">// 页面1
+const First = () =&gt; &lt;p&gt;页面一的内容&lt;/p&gt;
+// 页面2
+function Second(props) {
+  function handel() {
+      console.log(props);
+      {/* //返回上一页 */}
+      props.history.go(-1)
   }
+  return (&lt;p&gt;页面二的内容
+      &lt;button onClick={handel}&gt;返回&lt;/button&gt;
+  &lt;/p&gt;)
 }
-</code></pre>
-<h3 id="非受控组件-不常使用"><a href="#非受控组件-不常使用" class="headerlink" title="非受控组件 (不常使用)"></a>非受控组件 (不常使用)</h3><ul>
-<li>说明：借助于ref，使用元素DOM方式获取表单元素值</li>
-<li>ref的作用：获取DOM或者组件</li>
-</ul>
-<h4 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
-<li>调用 <code>React.createRef()</code> 方法创建ref对象</li>
-<li>将创建好的 ref 对象添加到文本框中</li>
-<li>通过ref对象获取到文本框的值</li>
-</ul>
-<pre><code class="react">class App extends React.Component {
-    constructor(){
-        super()
+// 页面三
+const Three = () =&gt; &lt;p&gt;默认路由&lt;/p&gt;
 
-        //创建 ref
-        this.txtRef = React.createRef()
-    }
-    // 获取文本框的值
-    getTxt =() =&gt; {
-        console.log(this.txtRef.current.value)
-    }
-    render(){
-        return (
-          &lt;div&gt;
-            &lt;input type =&quot;text&quot; ref={this.txtRef} /&gt;
-            &lt;button onClick ={this.getTxt}&gt;获取值&lt;/button&gt;
-          &lt;/div&gt;
-        )
-    }
-}
+  // 3 使用Router组件包裹整个应用
+  const Addd = () =&gt; (
+  &lt;Router&gt;
+      &lt;div&gt;
+      &lt;h1&gt;React路由基础&lt;/h1&gt;
+      {/* 4 指定路由入口 */}
+      &lt;Link to=&quot;/first&quot;&gt;页面一&lt;/Link&gt;
+      &lt;Link to=&quot;/second&quot;&gt;页面二&lt;/Link&gt;
+
+      {/* 5 指定路由出口 */}
+      &lt;Route path=&quot;/first&quot; component={First} /&gt;
+      &lt;Route path=&quot;/second&quot; component={Second} /&gt;
+      {/* // 配置默认路由*/}
+      &lt;Route path=&quot;/&quot; component={Three} /&gt;
+      &lt;/div&gt;
+  &lt;/Router&gt;
+  )
+ReactDOM.render(&lt;Addd/&gt;,document.getElementById(&#39;root&#39;))
 </code></pre>
+</li>
+</ul>
+<h3 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h3><ul>
+<li>默认路由：表示进入页面时就会匹配的路由</li>
+<li>默认路由：只需要把path设置为 <code>&#39;/&#39;</code></li>
+</ul>
+<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><h4 id="模糊匹配模式"><a href="#模糊匹配模式" class="headerlink" title="模糊匹配模式"></a>模糊匹配模式</h4><ul>
+<li>在上一个案列中，当跳转到页面一时。不仅会显示页面一的内容，默认路由页面的内容依旧会被显示。</li>
+<li>默认情况下，React路由是模糊匹配模式</li>
+<li>模糊匹配规则：只要pathname以path开头就会匹配成功</li>
+</ul>
+<h4 id="精准匹配"><a href="#精准匹配" class="headerlink" title="精准匹配"></a>精准匹配</h4><ul>
+<li>默认路由任何情况下都会展示，如果避免这种问题？</li>
+<li>给Route组件添加exact属性，让其变为<strong>精准匹配模式</strong></li>
+<li>精确匹配：只有当path和pathname完全匹配时才会展示改路由<pre><code class="react">      {/* // 配置默认路由*/}
+      &lt;Route exact path=&quot;/&quot; component={Three} /&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>React路由可以有效的管理多个视图实现 SPA</li>
+<li>路由先需要通过安装</li>
+<li>Router组件包裹整个应用，只需要使用一次</li>
+<li>Link组件是入口，Route组件是出口</li>
+<li>通过props.history实现编程式导航</li>
+<li>默认是模糊匹配，添加exact编程精确匹配</li>
+<li>React路由的一切都是组件，可以像思考组件一样思考路由</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -490,28 +527,11 @@ ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/03/07/wechat1/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%209.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/timg%209.webp">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                微信小程序开发（一）</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/03/06/react1/" rel="next">
+            <a href="/2020/03/11/react5/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/pp5.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/pp5.webp">
               </div>
@@ -519,7 +539,7 @@ ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
               Next Post</span>
               <div class="info">
                 <h3>
-                react基础学习（一）</h3>
+                react基础学习（四）</h3>
                 <hr>
               </div>
             </a>

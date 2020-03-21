@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">react基础学习（二） | GyCalcc</title>
+  <title itemprop="name">react基础学习（四） | GyCalcc</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -337,11 +337,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(http://cdn.calcc.live/timg%2010.webp);" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%2010.webp">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(http://cdn.calcc.live/pp5.webp);" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/pp5.webp">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      react基础学习（二）</h1>
+      react基础学习（四）</h1>
       <p class="entry-census">
         <span>
           <a href="GyCalcc.coding.me">
@@ -353,7 +353,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-3-7<span class="bull">
+        2020-3-11<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -367,102 +367,232 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h1><h2 id="表单处理"><a href="#表单处理" class="headerlink" title="表单处理"></a>表单处理</h2><h3 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h3><ul>
-<li>HTML中的表单元素是可输入的，也就是有自己的可变状态</li>
-<li>而React中可变状态通常保存在state中，并且只能通过<code>setState()</code> 方法来修改</li>
-<li>React讲state与表单元素值value绑定在一起，有state的值来控制表单元素的值</li>
-<li>受控组件：值受到react控制的表单元素</li>
-</ul>
-<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
-<li>在state中添加一个状态，作为表单元素的value值</li>
-<li>给表单元素绑定change事件，将表单元素的值设置为state的值</li>
-</ul>
-<h4 id="示例demo"><a href="#示例demo" class="headerlink" title="示例demo"></a>示例demo</h4><pre><code class="react">class App extends React.Component {
-    state = {
-        txt : &#39;&#39;
-    }
-    inputChange=(e)=&gt;{
-       this.setState({
-           txt: e.target.value
-       })
-    }
-    render(){
-        console.log(this.state);
-
-        return (
-            &lt;div&gt;
-                &lt;input type=&quot;text&quot; value={this.state.txt} onChange={this.inputChange}/&gt;
-            &lt;/div&gt;
-        )
-    }
+          <h1 id="React原理"><a href="#React原理" class="headerlink" title="React原理"></a>React原理</h1><h2 id="setState-说明"><a href="#setState-说明" class="headerlink" title="setState()说明"></a><code>setState()</code>说明</h2><h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><ul>
+<li><code>setState()</code>更新数据是异步的</li>
+<li>后面的<code>setState</code>不要依赖前面<code>setState</code>的值</li>
+<li>多次调用<code>setState</code>，只会触发一次render<pre><code class="react">class Propss extends React.Component {
+state = {
+  count: 1
 }
-ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
-</code></pre>
-<h4 id="多表单元素优化"><a href="#多表单元素优化" class="headerlink" title="多表单元素优化"></a>多表单元素优化</h4><ul>
-<li>问题：每个表单元素都有一个单独的事件处理函数，这样太繁琐</li>
-<li>优化：使用一个事件处理程序同时处理多个表单元素</li>
-</ul>
-<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
-<li>给表单元素添加name属性（用来区分是哪一个表单），名称与state相同（用来更新数据的）</li>
-<li>根据表单内容来获取对应值</li>
-<li>在change事件处理程序中通过 [name] 来修改对应的state</li>
-</ul>
-<h5 id="示例demo-1"><a href="#示例demo-1" class="headerlink" title="示例demo"></a>示例demo</h5><pre><code class="react">class Haaa extends React.Component {
-    state={
-        txt:&#39;&#39;,
-        isChecked:false
-    }
-
-    inputChange = (e)=&gt;{
-        let target = e.target;
-        let value = target.type == &#39;checkbox&#39; ? target.checked : target.value;
-        this.setState({
-            [target.name]: value
-        })
-     }
-
+handleClick = () =&gt; {
+  // 此处，更新state
+  // 注意：异步更新数据的！！！
+  this.setState({
+    count: this.state.count + 1 //1 + 1
+  })
+  console.log(&#39;count：&#39;, this.state.count) // 1
+  this.setState({
+    count: this.state.count + 1 // 1 + 1
+  })
+  console.log(&#39;count：&#39;, this.state.count) // 1
+}
   render() {
-      console.log(this.state.txt);
-      console.log(this.state.isChecked);
-    return (
-        &lt;div&gt;
-        &lt;input type=&quot;text&quot; value={this.state.txt} name=&quot;txt&quot; onChange={this.inputChange}/&gt;
-        &lt;input type=&quot;checkbox&quot; value={this.state.isChecked} name=&quot;isChecked&quot; onChange={this.inputChange}/&gt;
-        &lt;/div&gt;
-    )
+      console.log(&#39;render&#39;)
+      return (
+      &lt;div&gt;
+          &lt;h1&gt;计数器：{this.state.count}&lt;/h1&gt;
+          &lt;button onClick={this.handleClick}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+      )
   }
 }
 </code></pre>
-<h3 id="非受控组件-不常使用"><a href="#非受控组件-不常使用" class="headerlink" title="非受控组件 (不常使用)"></a>非受控组件 (不常使用)</h3><ul>
-<li>说明：借助于ref，使用元素DOM方式获取表单元素值</li>
-<li>ref的作用：获取DOM或者组件</li>
+</li>
 </ul>
-<h4 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
-<li>调用 <code>React.createRef()</code> 方法创建ref对象</li>
-<li>将创建好的 ref 对象添加到文本框中</li>
-<li>通过ref对象获取到文本框的值</li>
-</ul>
-<pre><code class="react">class App extends React.Component {
-    constructor(){
-        super()
+<h3 id="推荐语法"><a href="#推荐语法" class="headerlink" title="推荐语法"></a>推荐语法</h3><ul>
+<li>推荐：使用 <code>setState((state,props) =&gt; {})</code> 语法</li>
+<li>参数state： 表示最新的state</li>
+<li><p>参数props： 表示最新的props</p>
+<pre><code class="react">class Propss extends React.Component {
+state = {
+  count: 1
+}
+handleClick = () =&gt; {
+  this.setState((state, props) =&gt; {
+    return {
+      count: state.count + 1 // 1 + 1
+    }
+  })
+  this.setState((state, props) =&gt; {
+    console.log(&#39;第二次调用：&#39;, state)
+    return {
+      count: state.count + 1 // 2+  1
+    }
+  })
+  console.log(&#39;count：&#39;, this.state.count) // 1
+}
 
-        //创建 ref
-        this.txtRef = React.createRef()
-    }
-    // 获取文本框的值
-    getTxt =() =&gt; {
-        console.log(this.txtRef.current.value)
-    }
-    render(){
-        return (
-          &lt;div&gt;
-            &lt;input type =&quot;text&quot; ref={this.txtRef} /&gt;
-            &lt;button onClick ={this.getTxt}&gt;获取值&lt;/button&gt;
-          &lt;/div&gt;
-        )
-    }
+  render() {
+      return (
+      &lt;div&gt;
+          &lt;h1&gt;计数器：{this.state.count}&lt;/h1&gt;
+          &lt;button onClick={this.handleClick}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+      )
+  }
 }
 </code></pre>
+</li>
+</ul>
+<h3 id="第二个参数"><a href="#第二个参数" class="headerlink" title="第二个参数"></a>第二个参数</h3><ul>
+<li>场景：在状态更新(页面完成重新渲染)后立即执行某个操作</li>
+<li><p>语法：<code>setState(update[,callback])</code></p>
+<pre><code class="react">class Propss extends React.Component {
+state = {
+  count: 1
+}
+
+handleClick = () =&gt; {
+  this.setState(
+    (state, props) =&gt; {
+      return {
+        count: state.count + 1
+      }
+    },
+    // 状态更新后并且重新渲染后，立即执行：
+    () =&gt; {
+      console.log(&#39;状态更新完成：&#39;, this.state.count) // 2
+      console.log(document.getElementById(&#39;title&#39;).innerText)
+      document.title = &#39;更新后的count为：&#39; + this.state.count
+    }
+  )
+  console.log(this.state.count) // 1
+}
+
+  render() {
+      return (
+      &lt;div&gt;
+          &lt;h1 id=&quot;title&quot;&gt;计数器：{this.state.count}&lt;/h1&gt;
+          &lt;button onClick={this.handleClick}&gt;+1&lt;/button&gt;
+      &lt;/div&gt;
+      )
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="JSX语法的转化过程"><a href="#JSX语法的转化过程" class="headerlink" title="JSX语法的转化过程"></a>JSX语法的转化过程</h2><ul>
+<li>JSX仅仅是<code>createElement()</code> 方法的语法糖(简化语法)</li>
+<li>JSX语法被 @babel/preset-react 插件编译为<code>createElement()</code> 方法</li>
+<li><p>React 元素： 是一个对象，用来描述你希望在屏幕上看到的内容</p>
+<pre><code class="react">
+  const element = &lt;h1 className=&quot;greeting&quot;&gt;Hello JSX!&lt;/h1&gt;
+
+  // const element = React.createElement(
+  //     &#39;h1&#39;,
+  //     {
+  //       className: &#39;greeting&#39;
+  //     },
+  //     &#39;Hello JSX！&#39;
+  //   )
+  console.log(element)
+  ReactDOM.render(element, document.getElementById(&#39;root&#39;))
+</code></pre>
+</li>
+</ul>
+<h2 id="组件更新机制"><a href="#组件更新机制" class="headerlink" title="组件更新机制"></a>组件更新机制</h2><ul>
+<li>setState() 的两个作用<ul>
+<li>修改state</li>
+<li>更新组件</li>
+</ul>
+</li>
+<li>过程：父组件重新渲染时，也会重新渲染子组件，但只会渲染当前组件子树（当前组件以其所有子组件）</li>
+</ul>
+<h2 id="组件性能优化"><a href="#组件性能优化" class="headerlink" title="组件性能优化"></a>组件性能优化</h2><h3 id="减轻state"><a href="#减轻state" class="headerlink" title="减轻state"></a>减轻state</h3><ul>
+<li>减轻state：只存储跟组件渲染相关的数据（比如：count/ 列表数据 /loading等）</li>
+<li>注意：不用做渲染的数据不要放在state中</li>
+<li>对于这种需要在多个方法中用到的数据，应该放到this中</li>
+</ul>
+<h3 id="避免不必要的重新渲染"><a href="#避免不必要的重新渲染" class="headerlink" title="避免不必要的重新渲染"></a>避免不必要的重新渲染</h3><ul>
+<li>组件更新机制：父组件更新会引起子组件也被更新，这种思路很清晰</li>
+<li>问题：子组件没有任何变化时也会重新渲染</li>
+<li>如果避免不必要的重新渲染？</li>
+<li>解决方式：使用钩子函数 shouldComponentUpdate(nextProps, nextState)<ul>
+<li>在这个函数中，nextProps和nextState是最新的状态以及属性</li>
+</ul>
+</li>
+<li>作用：这个函数有返回值，如果返回true，代表需要重新渲染，如果返回false，代表不需要重新渲染</li>
+<li><p>触发时机：更新阶段的钩子函数，组件重新渲染前执行(shouldComponentUpdate =&gt; render)</p>
+<pre><code class="react">class Element extends React.Component {
+  state = {
+    count: 0
+  }
+
+  handleClick = () =&gt; {
+    this.setState(state =&gt; {
+      return {
+        count: state.count + 1
+      }
+    })
+  }
+
+  // 钩子函数
+  shouldComponentUpdate(nextProps, nextState) {
+    // 返回false，阻止组件重新渲染
+    // return false
+
+    // 最新的状态：
+    console.log(&#39;最新的state：&#39;, nextState)
+    // 更新前的状态：
+    console.log(&#39;this.state:&#39;, this.state)
+    return true
+  }
+
+  render() {
+  console.log(&#39;组件更新了&#39;)
+      return (
+          &lt;div&gt;
+          &lt;h1&gt;计数器：{this.state.count}&lt;/h1&gt;
+          &lt;button onClick={this.handleClick}&gt;+1&lt;/button&gt;
+          &lt;/div&gt;
+      )
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="纯组件"><a href="#纯组件" class="headerlink" title="纯组件"></a>纯组件</h3><h4 id="作用以及使用"><a href="#作用以及使用" class="headerlink" title="作用以及使用"></a>作用以及使用</h4><ul>
+<li>纯组件： PureComponent 与 React.Component 功能相似</li>
+<li>区别： PureComponent 内部自动实现了 shouldComponentUpdate钩子，不需要手动比较</li>
+<li>原理：纯组件内部通过分别比对前后两次 props和state的值，来决定是否重新渲染组件<pre><code class="react">class Hello extends React.PureComponent {
+render() {
+  return (
+    &lt;div&gt;类组件封装&lt;/div&gt;
+  )
+}
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><ul>
+<li>说明：纯组件内部的对比是 shallow compare（浅层对比）</li>
+<li>对于值类型来说：比较两个值是否相同</li>
+<li>引用类型：只比对对象的引用地址是否相同</li>
+<li>注意：state 或 props 中属性值为引用类型时，应该创建新数据，不要直接修改原数据</li>
+</ul>
+<h2 id="虚拟DOM和Diff算法"><a href="#虚拟DOM和Diff算法" class="headerlink" title="虚拟DOM和Diff算法"></a>虚拟DOM和Diff算法</h2><ul>
+<li>React更新视图的思想是：只要state变化就重新渲染视图</li>
+<li>如果组件中只有一个DOM元素需要更新时，不必把整个组件的内容重新渲染。部分更新，只更新变化的地方</li>
+<li>React运用的核心点就是 虚拟DOM 配合 Diff 算法</li>
+</ul>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><p>本质上就是一个JS对象，用来描述你希望在屏幕上看到的内容</p>
+<h3 id="Diff算法"><a href="#Diff算法" class="headerlink" title="Diff算法"></a>Diff算法</h3><p>执行过程</p>
+<ul>
+<li>初次渲染时，React会根据初始化的state（model），创建一个虚拟DOM对象（树）</li>
+<li>根据虚拟DOM生成真正的DOM，渲染到页面</li>
+<li>当数据变化后(setState())，会重新根据新的数据，创建新的虚拟DOM对象（树）</li>
+<li>与上一次得到的虚拟DOM对象，使用Diff算法比对（找不同），得到需要更新的内容</li>
+<li>最终，React只将变化的内容更新（patch）到DOM中，重新渲染到页面</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>工作角度：应用第一，原理第二</li>
+<li>原理有助于更好的理解React的自身运行机制</li>
+<li>setState() 异步更新数据</li>
+<li>父组件更新导致子组件更新，纯组件提升性能</li>
+<li>思路清晰简单为前提，虚拟DOM和Diff保效率（渲染变化的组件）</li>
+<li>虚拟DOM -&gt; state + JSX</li>
+<li>虚拟DOM最大的特点是 脱离了浏览器的束缚，也就是意味着只要是能支持js的地方都可以用到react，所以为什么说react是可以进行跨平台的开发</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -493,15 +623,15 @@ ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/03/07/wechat1/" rel="prev">
+            <a href="/2020/03/12/react6/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg%209.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/timg%209.webp">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/timg3.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/timg3.webp">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                微信小程序开发（一）</h3>
+                react基础学习（五）</h3>
                 <hr>
               </div>
             </a>
@@ -511,15 +641,15 @@ ReactDOM.render(&lt;App /&gt;,document.getElementById(&#39;root&#39;))
           
             <div class="post-nepre half next">
           
-            <a href="/2020/03/06/react1/" rel="next">
+            <a href="/2020/03/08/react3/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/pp5.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/pp5.webp">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/GyCalcc/cdn@2.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://cdn.calcc.live/pp9.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://cdn.calcc.live/pp9.webp">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                react基础学习（一）</h3>
+                react基础学习（三）</h3>
                 <hr>
               </div>
             </a>
